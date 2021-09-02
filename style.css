@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+body {
+    height: 100%;
+    background-color: rgb(188, 224, 238);
+    
+}
+
+#start, #game-over {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -100px;
+    margin-left:-100px;
+    height: 200px;
+    width: 250px;
+    text-align: center;
+}
+
+#start a, #game-over a {
+    border: 3px solid #fff;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    font-size: 2em;
+    display: inline-block;
+}
+
+.countdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5vh;
+}
+
+.timer-title, .countdownBoard {
+    font-size: 2.4rem;
+}
+
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 5vh;
+}
+
+.grid {
+    height: 648px;
+    width: 648px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+    text-align: center;
+}
+
+.grid div {
+    height: 70px;
+    width: 70px;
+    position: relative;
+    margin: 5px;
+}
+
+.square {
+    position: absolute;
+}
+
+.highlight {
+    box-shadow: inset 0px 0px 0px 6px skyblue;
+}
+
+.square:hover{
+    box-shadow: inset 0px 0px 0px 4px skyblue;
+    
+}
+
+.game {
+    display: flex;
+    
+}
+
+.vitamin-goal {
+    height: 200px;
+    width: 400px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    margin-left: 10%;
+    
+}
+
+.vitamin-display {
+    border: 4px solid black;
+
+    font-size: 2.4rem;
+    padding: 20px;
+    text-align: center;
+    align-content: center;
+  
+}
+
+.grid-foodName {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+}
+
+.foodName {
+    display:flex;
+    align-content: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    border: 4px solid black;    
+    padding: 20px;
+    width: 200px;
+    height: 80px;
+    align-self: center;
+    align-items: center;
+
+
+}
+
+.met, .goal, #score {
+    font-size: 2.4rem; 
+}
+
