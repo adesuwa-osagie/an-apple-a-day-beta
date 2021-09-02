@@ -13,6 +13,7 @@ body {
 
 #start, #game-over {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.6rem;
     color: #fff;
     padding: 20px;
     position: fixed;
@@ -98,7 +99,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
     margin-left: 10%;
     
 }
@@ -126,7 +127,7 @@ body {
     justify-content: center;
     font-size: 2.4rem;
     border: 4px solid black;    
-    padding: 20px;
+   
     width: 200px;
     height: 80px;
     align-self: center;
@@ -137,5 +138,15 @@ body {
 
 .met, .goal, #score {
     font-size: 2.4rem; 
+}
+
+h1 {
+    font-size: 6rem;
+    margin: auto;
+    flex-wrap: nowrap;
+}
+
+.message {
+    font-size: 2.4rem;
 }
 

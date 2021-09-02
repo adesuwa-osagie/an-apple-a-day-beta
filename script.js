@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-// function start() {
+// document.addEventListener('DOMContentLoaded', () => {
+function start() {
 
     const grid = document.querySelector('.grid');
     const scoreDisplay = document.getElementById('score');
@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const vitaminDisplay = document.querySelector('.vitamin-display');
     let countdownBoard = document.querySelector('.countdownBoard');
     let foodName = document.querySelector('.foodName');
+    let message = document.querySelector('.message');
 
 
     let score = 0;
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let vitaminRequested = '';
 
     let timeUp = false;
-    let timeLimit = 60000;
+    let timeLimit = 10000;
     let countdown;
 
     /**
@@ -39,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const foodItems = [
         //to do images - example 'url(images/red-candy.png); REPLACE ALL backgroundColor with backgroundImage'
-
         apple,
         avocado,
         banana,
@@ -71,17 +71,25 @@ document.addEventListener('DOMContentLoaded', () => {
         "Watermelon": watermelon
     }
 
-    const vitaminPairings = {
-        'calcium': [apple],
-        'potassium': ['url(images/broccoli.png)'],
-        'fiber': ['url(images/broccoli.png)']
-    }
-
     const vitamins = [
-        'calcium',
-        'potassium',
-        'fiber'
+        'Calcium',
+        'Potassium',
+        'Fiber',
+        'Magnesium',
+        'Vitamin A',
+        'Vitamin C',
+        'Vitamin E'
     ]
+
+    const vitaminPairings = {
+        'Calcium': [broccoli, orange, beans],
+        'Potassium': [avocado, spinach, sweetPotato, banana, broccoli, orange],
+        'Fiber': [beans, broccoli, apple, sweetPotato],
+        'Magnesium': [avocado, peas, beans, banana, spinach],
+        'Vitamin A': [spinach, sweetPotato, watermelon],
+        'Vitamin C': [chiliPepper, lemon, strawberry],
+        'Vitamin E': [spinach, broccoli]
+    }
 
 
 
@@ -101,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(square);
             squares.push(square);
 
-       
+
 
 
         }
@@ -151,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     /**
      * Function to get the name of the color
      */
-     function getKeyByValue(object, value) {
+    function getKeyByValue(object, value) {
         for (let key in object) {
             if (object.hasOwnProperty(key)) {
                 if (object[key] === value) {
@@ -170,18 +178,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let name = getKeyByValue(foodNamePairings, stringName);
 
+
+
         foodName.textContent = name;
 
     }
 
-    function nameNotShowing(){
-        
+    function nameNotShowing() {
+
+
         foodName.textContent = '';
     }
 
-/**
- * Drag functions
- */
+    /**
+     * Drag functions
+     */
     function dragStart() {
         colorBeingDragged = this.style.backgroundImage;
         squareIdBeingDragged = parseInt(this.id);
@@ -578,46 +589,61 @@ document.addEventListener('DOMContentLoaded', () => {
         refill(i);
     }, 100);
 
-    
+
+
+    // timeUp = false;
+
+    // });
+
+    /**
+     * Time out
+     */
+
     countdown = timeLimit / 1000;
     countdownBoard.textContent = countdown;
-    
-    // timeUp = false;
-    
-});
+
+    setTimeout(function () {
+        timeUp = true;
+
+        if (timeUp) {
+            gameOver();
+
+        }
+
+    }, timeLimit);
+
+    let startCountdown = setInterval(function () {
+        countdown -= 1;
+        countdownBoard.textContent = countdown;
+
+        if (countdown < 0) {
+
+            countdown = 0;
+
+            clearInterval(startCountdown);
+
+
+        }
+
+    }, 1000);
+
 
 /**
- * Time out
+ * Message at the end of game
  */
 
-// setTimeout(function () {
-//     timeUp = true;
+let goal = 100;
 
-//     if (timeUp) {
-//         gameOver();
-        
-//     }
-
-// }, timeLimit);
-
-// let startCountdown = setInterval(function () {
-//     countdown -= 1;
-//     countdownBoard.textContent = countdown;
-
-//     if (countdown < 0) {
-
-//         countdown = 0;
-
-//         clearInterval(startCountdown);
+    if (score >= goal) {
+        message.textContent = "You survived. See you at your next appointment."
+    } else {
+        message.textContent = "You were turned into plant food."
+    }
 
 
-//     }
 
-// }, 1000);
-
-
-//curly brace for start
-// }
+    //curly brace for start()
+}
 
 
 function startGame() {
@@ -625,7 +651,7 @@ function startGame() {
     let startDiv = document.getElementById('start');
     let gameCanvas = document.getElementById('gameScreen');
     let gameOver = document.getElementById('game-over');
-    
+
 
     startDiv.style.display = 'none';
     gameCanvas.style.display = 'block';
@@ -634,7 +660,7 @@ function startGame() {
     start();
 
 
-   
+
 
 }
 
@@ -642,21 +668,23 @@ function gameOver() {
     let startDiv = document.getElementById('start');
     let gameCanvas = document.getElementById('gameScreen');
     let gameOver = document.getElementById('game-over');
+    let grid = document.querySelector('.grid');
+    let message = document.querySelector('.message');
 
     startDiv.style.display = 'none';
     gameCanvas.style.display = 'none';
     gameOver.style.display = 'block';
+    message.style.display = 'block';
 
 
-    let grid = document.querySelector('.grid');
 
     grid.innerHTML = '';
 
     //if requirement is met
-        //display 'You met the daily requirement'
+    //display 'You met the daily requirement'
 
     //if not met before time runs out
-        //display 'You died. Your remains were made into fertilizer to grow trees for needy. Thank you for your contribution '
+    //display 'You died. Your remains were made into fertilizer to grow trees for needy. Thank you for your contribution '
 
 }
 
