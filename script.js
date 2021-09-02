@@ -19,39 +19,71 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeLimit = 60000;
     let countdown;
 
-    const candyColors = [
+    /**
+     * Food items
+     */
+
+    let apple = 'url(\"images/apple.png\")';
+    let avocado = 'url(\"images/avocado.png\")';
+    let banana = 'url(\"images/banana.png\")';
+    let beans = 'url(\"images/beans.png\")';
+    let broccoli = 'url(\"images/broccoli.png\")';
+    let chiliPepper = 'url(\"images/chili-peppers.png\")';
+    let lemon = 'url(\"images/lemon.png\")';
+    let orange = 'url(\"images/orange.png\")';
+    let peas = 'url(\"images/peas.png\")';
+    let spinach = 'url(\"images/spinach.png\")';
+    let strawberry = 'url(\"images/strawberries.png\")';
+    let sweetPotato = 'url(\"images/sweet-potato.png\")';
+    let watermelon = 'url(\"images/watermelon.png\")';
+
+    const foodItems = [
         //to do images - example 'url(images/red-candy.png); REPLACE ALL backgroundColor with backgroundImage'
 
-        'red',
-        'yellow',
-        'orange',
-        'purple',
-        'green',
-        'blue'
+        apple,
+        avocado,
+        banana,
+        beans,
+        broccoli,
+        chiliPepper,
+        lemon,
+        orange,
+        peas,
+        spinach,
+        strawberry,
+        sweetPotato,
+        watermelon
     ];
 
-    const candyColorName = {
-        'red2': 'red',
-        'yellow2': 'yellow',
-        'orange2': 'orange',
-        'purple2': 'purple',
-        'green2': 'green',
-        'blue2': 'blue'
-        
+    const foodNamePairings = {
+        'Apple': apple,
+        'Avocado': avocado,
+        'Banana': banana,
+        'Beans': beans,
+        'Broccoli': broccoli,
+        'Chili Pepper': chiliPepper,
+        'Lemon': lemon,
+        "Orange": orange,
+        "Peas": peas,
+        "Spinach": spinach,
+        "Strawberry": strawberry,
+        "Sweet Potato": sweetPotato,
+        "Watermelon": watermelon
     }
 
-    /**
-     * Function to get the name of the color
-     */
-    function getKeyByValue(object, value) {
-        for (let key in object) {
-            if (object.hasOwnProperty(key)) {
-                if (object[key] === value) {
-                    return key;
-                }
-            }
-        }
+    const vitaminPairings = {
+        'calcium': [apple],
+        'potassium': ['url(images/broccoli.png)'],
+        'fiber': ['url(images/broccoli.png)']
     }
+
+    const vitamins = [
+        'calcium',
+        'potassium',
+        'fiber'
+    ]
+
+
 
 
     // Create Board
@@ -63,27 +95,21 @@ document.addEventListener('DOMContentLoaded', () => {
             square.setAttribute('id', i);
             square.classList.add('square');
 
-            let randomColor = Math.floor(Math.random() * candyColors.length);
-            square.style.backgroundColor = candyColors[randomColor];
+            let randomColor = Math.floor(Math.random() * foodItems.length);
+            square.style.backgroundImage = foodItems[randomColor];
 
             grid.appendChild(square);
             squares.push(square);
+
+       
+
+
         }
     }
 
     createBoard();
 
-    const vitaminPairings = {
-        'calcium': ['red', 'yellow', 'orange'],
-        'potassium': ['purple', 'green', 'blue'],
-        'fiber': ['red']
-    }
 
-    const vitamins = [
-        'calcium',
-        'potassium',
-        'fiber'
-    ]
 
     // Create Vitamin
     function vitaminRequired() {
@@ -122,16 +148,30 @@ document.addEventListener('DOMContentLoaded', () => {
     squares.forEach(square => square.addEventListener('drop', dragDrop));
     squares.forEach(square => square.addEventListener('dragend', dragEnd));
 
-
+    /**
+     * Function to get the name of the color
+     */
+     function getKeyByValue(object, value) {
+        for (let key in object) {
+            if (object.hasOwnProperty(key)) {
+                if (object[key] === value) {
+                    return key;
+                }
+            }
+        }
+    }
 
     /**
      * Reveals name of food item
      */
     function nameRevealed() {
 
-        let name = getKeyByValue(candyColorName, this.style.backgroundColor);
+        let stringName = this.style.backgroundImage
+
+        let name = getKeyByValue(foodNamePairings, stringName);
 
         foodName.textContent = name;
+
     }
 
     function nameNotShowing(){
@@ -143,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * Drag functions
  */
     function dragStart() {
-        colorBeingDragged = this.style.backgroundColor;
+        colorBeingDragged = this.style.backgroundImage;
         squareIdBeingDragged = parseInt(this.id);
         console.log(colorBeingDragged);
         console.log(this.id, 'dragstart');
@@ -166,11 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function dragDrop() {
         console.log(this.id, 'dragdrop');
 
-        colorBeingReplaced = this.style.backgroundColor;
+        colorBeingReplaced = this.style.backgroundImage;
         squareIdBeingReplaced = parseInt(this.id);
 
-        this.style.backgroundColor = colorBeingDragged;
-        squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced;
+        this.style.backgroundImage = colorBeingDragged;
+        squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced;
     }
 
     function dragEnd() {
@@ -210,12 +250,12 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(squares[squareIdBeingDragged])
             console.log(squares[squareIdBeingReplaced])
 
-            squares[squareIdBeingReplaced].style.backgroundColor = colorBeingDragged;
-            squares[squareIdBeingDragged].style.backgroundColor = colorBeingReplaced;
+            squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged;
+            squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced;
             squareIdBeingReplaced = null
         } else if (squareIdBeingReplaced && !validMove) {
-            squares[squareIdBeingReplaced].style.backgroundColor = colorBeingReplaced;
-            squares[squareIdBeingDragged].style.backgroundColor = colorBeingDragged;
+            squares[squareIdBeingReplaced].style.backgroundImage = colorBeingReplaced;
+            squares[squareIdBeingDragged].style.backgroundImage = colorBeingDragged;
         }
     }
 
@@ -229,14 +269,14 @@ document.addEventListener('DOMContentLoaded', () => {
         //if firstHighlightedSquare is ''
         if (firstHighlightedSquare === null) {
             firstHighlightedSquare = this;
-            firstColor = this.style.backgroundColor;
+            firstColor = this.style.backgroundImage;
             firstId = parseInt(this.id)
             console.log(firstHighlightedSquare, 'first square')
 
 
         } else {
             secondHighlightedSquare = this;
-            secondColor = this.style.backgroundColor;
+            secondColor = this.style.backgroundImage;
             secondId = parseInt(this.id);
             firstHighlightedSquare.classList.remove('highlight');
             console.log(firstId)
@@ -275,8 +315,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             if (validMove) {
-                firstHighlightedSquare.style.backgroundColor = secondColor;
-                secondHighlightedSquare.style.backgroundColor = firstColor;
+                firstHighlightedSquare.style.backgroundImage = secondColor;
+                secondHighlightedSquare.style.backgroundImage = firstColor;
                 secondHighlightedSquare.classList.remove('highlight');
                 firstHighlightedSquare = null;
             } else {
@@ -292,9 +332,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function moveDown() {
         //56 to check the row below (i.e. 55 + 8 = 63 the last square)
         for (i = 0; i < 56; i++) {
-            if (squares[i + width].style.backgroundColor === '') {
-                squares[i + width].style.backgroundColor = squares[i].style.backgroundColor;
-                squares[i].style.backgroundColor = '';
+            if (squares[i + width].style.backgroundImage === '') {
+                squares[i + width].style.backgroundImage = squares[i].style.backgroundImage;
+                squares[i].style.backgroundImage = '';
 
                 refill(i)
 
@@ -311,9 +351,9 @@ document.addEventListener('DOMContentLoaded', () => {
         for (i = 0; i < 56; i++) {
             const firstRow = [0, 1, 2, 3, 4, 5, 6, 7];
             const isFirstRow = firstRow.includes(i);
-            if (isFirstRow && squares[i].style.backgroundColor === '') {
-                let randomColor = Math.floor(Math.random() * candyColors.length)
-                squares[i].style.backgroundColor = candyColors[randomColor];
+            if (isFirstRow && squares[i].style.backgroundImage === '') {
+                let randomColor = Math.floor(Math.random() * foodItems.length)
+                squares[i].style.backgroundImage = foodItems[randomColor];
             }
         }
     }
@@ -331,8 +371,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkRowForFive() {
         for (i = 0; i < 60; i++) {
             let rowOfFive = [i, i + 1, i + 2, i + 3, i + 4];
-            let decidedColor = squares[i].style.backgroundColor;
-            const isBlank = squares[i].style.backgroundColor === '';
+            let decidedColor = squares[i].style.backgroundImage;
+            const isBlank = squares[i].style.backgroundImage === '';
 
             //To prevent edges to count as part of a row
             const notValid = [4, 5, 6, 7, 12, 13, 14, 15, 20, 21, 22, 23, 28, 29, 30, 31, 36, 37, 38, 39, 44, 45, 46, 47, 52, 53, 54, 55];
@@ -340,20 +380,20 @@ document.addEventListener('DOMContentLoaded', () => {
             //To skip a notValid
             if (notValid.includes(i)) continue;
 
-            if (rowOfFive.every(index => squares[index].style.backgroundColor === decidedColor
+            if (rowOfFive.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank
-                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundColor))
+                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundImage))
             ) {
                 score += 5;
                 scoreDisplay.textContent = score
                 rowOfFive.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
-            } else if (rowOfFive.every(index => squares[index].style.backgroundColor === decidedColor
+            } else if (rowOfFive.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank)
             ) {
                 rowOfFive.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
             }
         }
@@ -366,23 +406,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkColumnForFive() {
         for (i = 0; i < 40; i++) {
             let columnOfFive = [i, i + width, i + width * 2, i + width * 3];
-            let decidedColor = squares[i].style.backgroundColor;
-            const isBlank = squares[i].style.backgroundColor === '';
+            let decidedColor = squares[i].style.backgroundImage;
+            const isBlank = squares[i].style.backgroundImage === '';
 
-            if (columnOfFive.every(index => squares[index].style.backgroundColor === decidedColor
+            if (columnOfFive.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank
-                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundColor))
+                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundImage))
             ) {
                 score += 5;
                 scoreDisplay.textContent = score
                 columnOfFive.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
-            } else if (columnOfFive.every(index => squares[index].style.backgroundColor === decidedColor
+            } else if (columnOfFive.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank)
             ) {
                 columnOfFive.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
             }
         }
@@ -397,8 +437,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkRowForFour() {
         for (i = 0; i < 60; i++) {
             let rowOfFour = [i, i + 1, i + 2, i + 3];
-            let decidedColor = squares[i].style.backgroundColor;
-            const isBlank = squares[i].style.backgroundColor === '';
+            let decidedColor = squares[i].style.backgroundImage;
+            const isBlank = squares[i].style.backgroundImage === '';
 
             //To prevent edges to count as part of a row
             const notValid = [5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39, 45, 46, 47, 53, 54, 55];
@@ -406,20 +446,20 @@ document.addEventListener('DOMContentLoaded', () => {
             //To skip a notValid
             if (notValid.includes(i)) continue;
 
-            if (rowOfFour.every(index => squares[index].style.backgroundColor === decidedColor
+            if (rowOfFour.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank
-                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundColor))
+                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundImage))
             ) {
                 score += 4;
                 scoreDisplay.textContent = score
                 rowOfFour.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
-            } else if (rowOfFour.every(index => squares[index].style.backgroundColor === decidedColor
+            } else if (rowOfFour.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank)
             ) {
                 rowOfFour.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
             }
         }
@@ -432,23 +472,23 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkColumnForFour() {
         for (i = 0; i < 40; i++) {
             let columnOfFour = [i, i + width, i + width * 2, i + width * 3];
-            let decidedColor = squares[i].style.backgroundColor;
-            const isBlank = squares[i].style.backgroundColor === '';
+            let decidedColor = squares[i].style.backgroundImage;
+            const isBlank = squares[i].style.backgroundImage === '';
 
-            if (columnOfFour.every(index => squares[index].style.backgroundColor === decidedColor
+            if (columnOfFour.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank
-                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundColor))
+                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundImage))
             ) {
                 score += 4;
                 scoreDisplay.textContent = score
                 columnOfFour.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
-            } else if (columnOfFour.every(index => squares[index].style.backgroundColor === decidedColor
+            } else if (columnOfFour.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank)
             ) {
                 columnOfFour.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
             }
         }
@@ -463,8 +503,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkRowForThree() {
         for (i = 0; i < 62; i++) {
             let rowOfThree = [i, i + 1, i + 2];
-            let decidedColor = squares[i].style.backgroundColor;
-            const isBlank = squares[i].style.backgroundColor === '';
+            let decidedColor = squares[i].style.backgroundImage;
+            const isBlank = squares[i].style.backgroundImage === '';
 
             //To prevent edges to count as part of a row
             const notValid = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55];
@@ -472,20 +512,20 @@ document.addEventListener('DOMContentLoaded', () => {
             //To skip a notValid
             if (notValid.includes(i)) continue;
 
-            if (rowOfThree.every(index => squares[index].style.backgroundColor === decidedColor
+            if (rowOfThree.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank
-                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundColor))
+                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundImage))
             ) {
                 score += 3;
                 scoreDisplay.textContent = score
                 rowOfThree.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
-            } else if (rowOfThree.every(index => squares[index].style.backgroundColor === decidedColor
+            } else if (rowOfThree.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank)
             ) {
                 rowOfThree.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
             }
         }
@@ -498,24 +538,24 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkColumnForThree() {
         for (i = 0; i < 48; i++) {
             let columnOfThree = [i, i + width, i + width * 2];
-            let decidedColor = squares[i].style.backgroundColor;
-            const isBlank = squares[i].style.backgroundColor === '';
+            let decidedColor = squares[i].style.backgroundImage;
+            const isBlank = squares[i].style.backgroundImage === '';
 
-            if (columnOfThree.every(index => squares[index].style.backgroundColor === decidedColor
+            if (columnOfThree.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank
-                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundColor))
+                && vitaminPairings[vitaminRequested].includes(squares[index].style.backgroundImage))
             ) {
                 score += 3;
                 scoreDisplay.textContent = score
                 columnOfThree.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
                 //else clear but not score
-            } else if (columnOfThree.every(index => squares[index].style.backgroundColor === decidedColor
+            } else if (columnOfThree.every(index => squares[index].style.backgroundImage === decidedColor
                 && !isBlank)
             ) {
                 columnOfThree.forEach(index => {
-                    squares[index].style.backgroundColor = '';
+                    squares[index].style.backgroundImage = '';
                 })
             }
         }
