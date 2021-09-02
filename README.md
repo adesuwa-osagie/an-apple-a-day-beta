@@ -126,3 +126,5 @@ The following are JavaScript-related that changes I made:
 * [David Reid](https://www.youtube.com/channel/UC0CPpbZ088BWsVM2rhpicfQ)
     * How I made the start and game over screens appear
     * <a href="https://www.youtube.com/watch?v=8_zUEh7Vqhs">Tutorial</a>.
+* [photoshopCAFE](https://www.youtube.com/channel/UCc0_OX4mqSoRecj3IgJTLtg)
+  * Has tutorials on using Adobe Photoshop to edit and merge images
