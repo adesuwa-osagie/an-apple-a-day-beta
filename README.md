@@ -1,9 +1,9 @@
-# An-Apple-A-Day (DEMO)
+# An-Apple-A-Day (beta)
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/adesuwa-osagie/an-apple-a-day-demo">
+  <a href="https://github.com/adesuwa-osagie/an-apple-a-day-beta">
     <img src="images/apple.png" alt="Logo" width="70" height="70">
   </a>
 
@@ -65,7 +65,7 @@ To get a local copy up and running follow these simple steps:
 #### Offline
 1. Clone the repo from the main branch
    ```sh
-   git clone https://github.com/adesuwa-osagie/an-apple-a-day-demo.git
+   git clone https://github.com/adesuwa-osagie/an-apple-a-day-beta.git
    ```
 2. Open the file "index.html" with "Live Server."
 
@@ -77,7 +77,7 @@ To get a local copy up and running follow these simple steps:
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and betas work well in this space. You may also link to more resources.
 
 <!-- CHANGES FROM KUBOW'S VERSION -->
 
@@ -110,7 +110,7 @@ The following are JavaScript-related that changes I made:
 
 [GitHub](https://github.com/adesuwa-osagie")
 
-[Project Link](https://github.com/adesuwa-osagie/an-apple-a-day-demo)
+[Project Link](https://github.com/adesuwa-osagie/an-apple-a-day-beta)
 
 
 
