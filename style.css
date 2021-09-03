@@ -44,10 +44,13 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 5vh;
+    background: cadetblue;
+    justify-content: center;
 }
 
 .timer-title, .countdownBoard {
-    font-size: 2.4rem;
+    font-size: 3.5rem;
+    color: white;
 }
 
 .game {
@@ -87,9 +90,12 @@ body {
     
 }
 
+#gameScreen {
+    background: rgb(12, 61, 12);
+}
+
 .game {
     display: flex;
-    
 }
 
 .vitamin-goal {
