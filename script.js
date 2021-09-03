@@ -9,6 +9,9 @@ function start() {
     let countdownBoard = document.querySelector('.countdownBoard');
     let foodName = document.querySelector('.foodName');
     let message = document.querySelector('.message');
+    let body = document.querySelector('body');
+
+    body.style.backgroundImage = 'url("screen-images/game-screen.jpg")';
 
 
     let score = 0;
@@ -17,7 +20,7 @@ function start() {
     let vitaminRequested = '';
 
     let timeUp = false;
-    let timeLimit = 10000;
+    let timeLimit = 90000;
     let countdown;
 
     /**
@@ -124,7 +127,7 @@ function start() {
         let randomVitamin = Math.floor(Math.random() * vitamins.length);
         vitaminDisplay.textContent = vitamins[randomVitamin];
         vitaminRequested = vitamins[randomVitamin];
-        console.log(vitaminPairings[vitaminRequested]);
+
 
     }
 
@@ -196,8 +199,7 @@ function start() {
     function dragStart() {
         colorBeingDragged = this.style.backgroundImage;
         squareIdBeingDragged = parseInt(this.id);
-        console.log(colorBeingDragged);
-        console.log(this.id, 'dragstart');
+
     }
 
 
@@ -207,15 +209,13 @@ function start() {
 
     function dragEnter(e) {
         e.preventDefault();
-        console.log(this.id, 'dragenter');
     }
 
     function dragLeave() {
-        console.log(this.id, 'dragleave');
     }
 
     function dragDrop() {
-        console.log(this.id, 'dragdrop');
+
 
         colorBeingReplaced = this.style.backgroundImage;
         squareIdBeingReplaced = parseInt(this.id);
@@ -225,7 +225,7 @@ function start() {
     }
 
     function dragEnd() {
-        console.log(this.id, 'dragend');
+
 
         //what is a valid move?
 
@@ -258,9 +258,6 @@ function start() {
         let validMove = validMoves.includes(squareIdBeingReplaced);
 
         if (validMove) {
-            console.log(squares[squareIdBeingDragged])
-            console.log(squares[squareIdBeingReplaced])
-
             squares[squareIdBeingReplaced].style.backgroundImage = colorBeingDragged;
             squares[squareIdBeingDragged].style.backgroundImage = colorBeingReplaced;
             squareIdBeingReplaced = null
@@ -282,16 +279,11 @@ function start() {
             firstHighlightedSquare = this;
             firstColor = this.style.backgroundImage;
             firstId = parseInt(this.id)
-            console.log(firstHighlightedSquare, 'first square')
-
-
         } else {
             secondHighlightedSquare = this;
             secondColor = this.style.backgroundImage;
             secondId = parseInt(this.id);
             firstHighlightedSquare.classList.remove('highlight');
-            console.log(firstId)
-            console.log(secondHighlightedSquare, 'second square ' + secondId)
 
             //what is a valid move?
             let validSwitch = [
@@ -592,6 +584,8 @@ function start() {
 
 
     // timeUp = false;
+    countdown = timeLimit / 1000;
+    countdownBoard.textContent = countdown;
 
     // });
 
@@ -599,8 +593,6 @@ function start() {
      * Time out
      */
 
-    countdown = timeLimit / 1000;
-    countdownBoard.textContent = countdown;
 
     setTimeout(function () {
         timeUp = true;
@@ -628,18 +620,21 @@ function start() {
     }, 1000);
 
 
-/**
- * Message at the end of game
- */
+    /**
+     * Message at the end of game
+     */
 
-let goal = 100;
+    let goal = 100;
 
     if (score >= goal) {
         message.textContent = "You survived. See you at your next appointment."
+        // body.style.backgroundImage = 'url("screen-images/you-won-screen.jpg")';
+    
     } else {
-        message.textContent = "You were turned into plant food."
+        message.textContent = "You were turned into plant food.\
+         Your remains were made into fertilizer to grow trees for the needy."
+        //  body.style.backgroundImage = 'url("screen-images/game-over-screen.jpg")';
     }
-
 
 
     //curly brace for start()
@@ -661,7 +656,6 @@ function startGame() {
 
 
 
-
 }
 
 function gameOver() {
@@ -679,12 +673,6 @@ function gameOver() {
 
 
     grid.innerHTML = '';
-
-    //if requirement is met
-    //display 'You met the daily requirement'
-
-    //if not met before time runs out
-    //display 'You died. Your remains were made into fertilizer to grow trees for needy. Thank you for your contribution '
 
 }
 

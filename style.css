@@ -6,9 +6,11 @@
 }
 
 body {
-    height: 100%;
-    background-color: rgb(188, 224, 238);
-    
+    background-image: url("screen-images/start-screen.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
 
 #start, #game-over {
@@ -39,15 +41,23 @@ body {
     display: inline-block;
 }
 
+#start a:hover, #game-over a:hover {
+    background: white;
+    color: #02091cbb;
+}
+
 .countdown {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 5vh;
+    background: cadetblue;
+    justify-content: center;
 }
 
 .timer-title, .countdownBoard {
-    font-size: 2.4rem;
+    font-size: 3.5rem;
+    color: white;
 }
 
 .game {
@@ -63,8 +73,9 @@ body {
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    
+    background: rgba(255, 255, 255, 0.397);
     text-align: center;
+    border: 3px solid rgba(255, 255, 255, 0.397);
 }
 
 .grid div {
@@ -72,6 +83,7 @@ body {
     width: 70px;
     position: relative;
     margin: 5px;
+    
 }
 
 .square {
@@ -87,9 +99,10 @@ body {
     
 }
 
+
+
 .game {
     display: flex;
-    
 }
 
 .vitamin-goal {
@@ -99,18 +112,19 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-
+    color: white;
     margin-left: 10%;
     
 }
 
 .vitamin-display {
-    border: 4px solid black;
-
-    font-size: 2.4rem;
+    border: 4px solid white;
+    border-radius: 5px;
+    font-size: 6.5rem;
     padding: 20px;
     text-align: center;
     align-content: center;
+    background: rgba(136, 134, 134, 0.842);
   
 }
 
@@ -125,9 +139,8 @@ body {
     display:flex;
     align-content: center;
     justify-content: center;
-    font-size: 2.4rem;
-    border: 4px solid black;    
-   
+    font-size: 3.4rem;
+    color: white;   
     width: 200px;
     height: 80px;
     align-self: center;
@@ -137,7 +150,7 @@ body {
 }
 
 .met, .goal, #score {
-    font-size: 2.4rem; 
+    font-size: 3.5rem; 
 }
 
 h1 {
@@ -146,7 +159,18 @@ h1 {
     flex-wrap: nowrap;
 }
 
+
+#game-over {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .message {
     font-size: 2.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    align-items: flex-start;
 }
 
