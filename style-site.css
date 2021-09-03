@@ -1,27 +1,45 @@
+@import url('http://fonts.cdnfonts.com/css/perpetua-titling-mt');      
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --gray-text: rgb(156, 156, 156);
+    --navyBlue-back: #02091cbb;
+}
+
 body {
     background-image: url("screen-images/landing-screen.jpg");
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
-    height: 100%;
-    width: 100%;
-    margin-top: 0vh;
     color: white;
+    font-size: 2rem;
+}
+
+.project-title {
+    font-family: 'Perpetua Titling MT', sans-serif;
+}
+
+.title{
+    font-family: 'Perpetua Titling MT', sans-serif;
+    width: 20vw;
+    background: var(--navyBlue-back);
+    
 }
 
 .nav-bar {
     position: absolute;
     z-index: 2;
     width: 100%;
-    font-size: 2.5rem;
+    
 }
 
-ul {
+#nav ul, #main-links ul {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -37,4 +55,132 @@ li a{
     color: #fff;
     text-decoration: none;
 
+}
+
+#welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    height: 50vh;
+    color: var(--gray-text);
+    font-family: 'Perpetua Titling MT', sans-serif;
+    font-size: 5rem;
+    background: rgba(120, 130, 131, 0.219);
+    text-shadow: 0.5px 0.5px #000;
+    
+}
+
+.welcome-paragraph {
+    padding: 20px;
+    font-size: 2rem;
+    font-style: italic;
+    padding-top: 50px;
+    color: var(--gray-text);
+}
+
+#main-links li:hover {
+    transform: scale(1.5);
+    text-decoration: underline;
+}
+
+#story, #provider, #instructions, #guide, #future {
+    padding: 50px;
+    background: rgba(120, 130, 131, 0.219);
+    width: 80vw;
+    margin-left: 10vw;
+    margin-top: 10vh;
+}
+
+#story p, #provider p, #instructions p {
+    
+    padding: 20px 0px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    padding: 10px;
+    width: 20vw;
+    background: #bbc1d3bb;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+
+a:visited {
+    color:rgb(126, 125, 125);
+}
+
+#guide {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#guide div {
+    display: flex;
+    padding: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: rgb(110, 106, 106);
+    width: 20vw;
+    border: 2px solid rgb(88, 88, 88);
+    margin: 10px;
+}
+
+#guide h3 {
+    display: flex;
+    font-size: 2.5rem;
+    margin-top: 10px;
+    
+    width: 20vw;
+    background: #bbc1d3bb;
+    border: 2px solid rgb(80, 80, 80);
+}
+
+#guide ul {
+    display: table;
+    justify-content: left;
+    list-style: none;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#future .title {
+    align-items: flex-start;
+    width: 50vw;
+    margin-right: 20%;
+}
+
+#future ul {
+    display: table;
+    margin-left: 5%;
+}
+
+#contact {
+    font-size: 1.8rem;
+    padding: 50px;
+
+margin: auto;
+
+}
+
+
+
+#contact div {
+    display: flex;
+    align-items: center;
+
+    padding: 0 10%;
+    list-style: none;
+    height: 10vh;
+    background-color: rgb(100, 100, 100, 0.2);
 }
