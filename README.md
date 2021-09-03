@@ -127,4 +127,6 @@ The following are JavaScript-related that changes I made:
     * How I made the start and game over screens appear
     * <a href="https://www.youtube.com/watch?v=8_zUEh7Vqhs">Tutorial</a>.
 * [photoshopCAFE](https://www.youtube.com/channel/UCc0_OX4mqSoRecj3IgJTLtg)
-  * Has tutorials on using Adobe Photoshop to edit and merge images
+    * Has tutorials on using Adobe Photoshop to edit and merge images
+* [Texturelabs](https://www.youtube.com/channel/UCBxd0ZwoptXc676LSaxCP5Q)
+    * Also has tutorials on using Adobe Photoshop on edit images. One of his tutorials is how I added light rays and the smoke-like texture to the images.
