@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-// function start() {
+// document.addEventListener('DOMContentLoaded', () => {
+function start() {
 
     const grid = document.querySelector('.grid');
     const scoreDisplay = document.getElementById('score');
@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let countdownBoard = document.querySelector('.countdownBoard');
     let foodName = document.querySelector('.foodName');
     let message = document.querySelector('.message');
+    let body = document.querySelector('body');
+
+    body.style.backgroundImage = 'url("screen-images/game-screen.jpg")';
 
 
     let score = 0;
@@ -124,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let randomVitamin = Math.floor(Math.random() * vitamins.length);
         vitaminDisplay.textContent = vitamins[randomVitamin];
         vitaminRequested = vitamins[randomVitamin];
-        
+
 
     }
 
@@ -212,7 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function dragDrop() {
-        
+
 
         colorBeingReplaced = this.style.backgroundImage;
         squareIdBeingReplaced = parseInt(this.id);
@@ -222,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function dragEnd() {
-    
+
 
         //what is a valid move?
 
@@ -584,7 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
     countdown = timeLimit / 1000;
     countdownBoard.textContent = countdown;
 
-    });
+    // });
 
     /**
      * Time out
@@ -617,22 +620,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1000);
 
 
-/**
- * Message at the end of game
- */
+    /**
+     * Message at the end of game
+     */
 
-let goal = 100;
+    let goal = 100;
 
     if (score >= goal) {
         message.textContent = "You survived. See you at your next appointment."
+        // body.style.backgroundImage = 'url("screen-images/you-won-screen.jpg")';
+    
     } else {
         message.textContent = "You were turned into plant food.\
          Your remains were made into fertilizer to grow trees for the needy."
+        //  body.style.backgroundImage = 'url("screen-images/game-over-screen.jpg")';
     }
 
 
     //curly brace for start()
-// }
+}
 
 
 function startGame() {
