@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An Apple A Day</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <section id="gameScreen" style="display:none">
+
+        <section class="countdown">
+            <div class="timer-title">Timer</div>
+            <div class="countdownBoard"></div>
+
+        </section>
+
+        <section class="game">
+
+            <section class="vitamin-goal">
+                <div class="vitamin-display"></div>
+                <div class="met">Met: <span id="score"></span></div>
+                <div class="goal">GOAL: 100</div>
+            </section>
+
+            <section class="grid-foodName">
+                <div class="foodName"></div>
+                <div class="grid"></div>
+            </section>
+
+        </section>
+
+    </section>
+
+
+    <div id="start" style="display:block">
+        <a href="#" onclick="startGame()">Start Game</a>
+    </div>
+
+    <div id="game-over" style="display:none">
+        <h1>Game Over</h1>
+        <div class="message"></div>
+        <a href="#" onclick="startGame()">Play Again?</a>
+    </div>
+
+
+</body>
+
+</html>

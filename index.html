@@ -5,48 +5,176 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/7dc5aac678.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style-site.css">
     <title>An Apple A Day</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" charset="utf-8"></script>
 </head>
 
 <body>
-    <section id="gameScreen" style="display:none">
 
-        <section class="countdown">
-            <div class="timer-title">Timer</div>
-            <div class="countdownBoard"></div>
+    <!-- Desktop Navbar -->
 
-        </section>
+    <nav id="nav">
+        <ul class="nav-list">
+            <li class="project-title">An Apple A Day</li>
+            <li><a href="#guide">Guide</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-        <section class="game">
 
-            <section class="vitamin-goal">
-                <div class="vitamin-display"></div>
-                <div class="met">Met: <span id="score"></span></div>
-                <div class="goal">GOAL: 100</div>
-            </section>
+    <!-- Welcome Section -->
+    <section id="welcome-section">
+        <h1 class="welcome-title">Welcome</h1>
+        <p class="welcome-paragraph">The Provider is ready to see you.</p>
+    </section>
 
-            <section class="grid-foodName">
-                <div class="foodName"></div>
-                <div class="grid"></div>
-            </section>
+    <section id="main-links">
+        <ul>
+            <li><a href="#story">The Story</a></li>
+            <li><a href="game.html">The Game</a></li>
+            <li><a href="#instructions">Instructions</a></li>
+        </ul>
+    </section>
 
-        </section>
+    <section id="story">
+        <h2 class="title">The Story</h2>
+        <p>Healthcare providers are fed up. They tired of the patients who CHOOSE not to meet their daily
+            vitamin requirements.</p>
+        <p>Rather than wait for these patient to become totally "un-recyclable," "The Provider" decided to turn these
+            patients into fertilizer that can be use to nourish fruit trees that can go on to feed the hungry for years
+            to come.
+        </p>
+        <p>You are one of The Provider's patients.</p>
+        <p>Can you show The Provider that you can meet your daily vitamin requirement?</p>
 
     </section>
 
+    <section id="provider">
+        <h2 class="title">The Provider</h2>
+        <p>"The Provider" is a healthcare provider. They could be a physician, a nurse practitioner, a specialist,
+            or <em>anyone</em> licensed to provide care.</p>
+    </section>
 
-    <div id="start" style="display:block">
-        <a href="#" onclick="startGame()">Start Game</a>
-    </div>
+    <section id="instructions">
+        <h2 class="title">Instructions</h2>
+        <h3>Summary</h3>
+        <p>This is a matching game.</p>
+        <p>Done in similar style to the game "Candy Crush." Credit to <a
+                href="https://www.youtube.com/watch?v=XD5sZWxwJUk&t=1445s">Ania Kubow</a> for providing the
+            tutorial for making a "Candy Crush" clone in JavaScript.
+        </p>
+        <p>For details on how mine differs from Kubow's tutorial, please see <a
+                href="https://github.com/adesuwa-osagie/an-apple-a-day-beta">README.md</a>
+            under this game's source code.</p>
+        <h3>How To Play</h3>
+        <p>Make matches of ROWS or COLUMNS to score.</p>
+        <p>Only matches of fruits and vegetables that are considered to be
+            rich in the vitamin requested will count as part of the score.</p>
+        <p>See <a href="#guide">GUIDE</a> to see which vitamins could be requested,
+            and which fruits and vegetables goes with each vitamin.</p>
+    </section>
 
-    <div id="game-over" style="display:none">
-        <h1>Game Over</h1>
-        <div class="message"></div>
-        <a href="#" onclick="startGame()">Play Again?</a>
-    </div>
+    <section id="guide">
+        <h2 class="title">Guide</h2>
 
+
+
+        <div>
+            <h3>Calcium</h3>
+            <ul>
+                <li>Beans</li>
+                <li>Broccoli</li>
+                <li>Orange</li>
+            </ul>
+        </div>
+        <div>
+            <h3>Potassium</h3>
+            <ul>
+                <li>Avocado</li>
+                <li>Banana</li>
+                <li>Broccoli</li>
+                <li>Orange</li>
+                <li>Sweet Potato</li>
+                <li>Spinach</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Fiber</h3>
+            <ul>
+                <li>Apple</li>
+                <li>Beans</li>
+                <li>Broccoli</li>
+                <li>Sweet Potato</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Magnesium</h3>
+            <ul>
+                <li>Avocado</li>
+                <li>Beans</li>
+                <li>Banana</li>
+                <li>Peas</li>
+                <li>Spinach</li>
+            </ul>
+        </div>
+
+        <div>
+            <h3>Vitamin A</h3>
+            <ul>
+                <li>Spinach</li>
+                <li>Sweet Potato</li>
+                <li>Watermelon</li>
+            </ul>
+        </div>
+
+            <div>
+                <h3>Vitamin C</h3>
+                <ul>
+                    <li>Chili Pepper</li>
+                    <li>Lemon</li>
+                    <li>Strawberry</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Vitamin E</h3>
+                <ul>
+                    <li>Spinach</li>
+                    <li>Broccoli</li>
+                </ul>
+            </div> 
+
+    </section>
+    
+
+    <section id="future">
+        <h2 class="title">Plans for the Future</h2>
+        <ul>
+            <li>Add levels</li>
+            <li>Add "Second Chance" Mini Games</li>
+            <li>Add jumpscares (This is a horror game.)</li>
+            <li>Horror games are in, but I might make a version in the style of my favorite game series: Rune Factory
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <section id="contact">
+        <h2 class="title">Creator</h2>
+        <div><h2>Adesuwa Osagie</h2></div>
+        
+        <div class="linkedIn">
+            <a href="https://www.linkedin.com/in/adesuwa-osagie/">LinkedIn <i class="fab fa-linkedin" aria-hidden="true"></i></a>
+        </div>
+        <div class="gitHub">
+            <a href="https://github.com/adesuwa-osagie">GitHub <i class="fa fa-github" aria-hidden="true"></i></a>
+        </div>
+    </section>
+    </footer>
 
 </body>
 
